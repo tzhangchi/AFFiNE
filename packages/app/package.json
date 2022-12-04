@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@blocksuite/blocks": "0.3.0-alpha.4",
-    "@blocksuite/editor": "0.3.0-alpha.4",
-    "@blocksuite/store": "0.3.0-alpha.4",
+    "@blocksuite/blocks": "workspace:@blocksuite/blocks@*",
+    "@blocksuite/editor": "workspace:@blocksuite/editor@*",
+    "@blocksuite/store": "workspace:@blocksuite/store@*",
     "@emotion/css": "^11.10.0",
     "@emotion/react": "^11.10.4",
     "@emotion/server": "^11.10.0",
@@ -38,7 +38,6 @@
     "eslint": "8.22.0",
     "eslint-config-next": "12.3.1",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "typescript": "4.8.3"
+    "eslint-plugin-prettier": "^4.2.1"
   }
 }

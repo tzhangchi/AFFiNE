@@ -14,6 +14,12 @@ const nextConfig = {
     VERSION: getGitVersion(),
     COMMIT_HASH: getCommitHash(),
   },
+  experimental: {
+    // Experimental monorepo support
+    // @link {https://github.com/vercel/next.js/pull/22867|Original PR}
+    // @link {https://github.com/vercel/next.js/discussions/26420|Discussion}
+    externalDir: true,
+  },
 };
 
 module.exports = nextConfig;
