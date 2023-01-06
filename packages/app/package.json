@@ -29,6 +29,7 @@
     "css-spring": "^4.1.0",
     "dayjs": "^1.11.7",
     "i18next": "^21.9.1",
+    "lib0": "^0.2.58",
     "lit": "^2.3.1",
     "next": "13.1.0",
     "next-debug-local": "^0.1.5",
@@ -38,6 +39,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-i18next": "^11.18.4",
+    "y-protocols": "^1.0.5",
     "yjs": "^13.5.44"
   },
   "devDependencies": {
@@ -50,8 +52,8 @@
     "eslint-config-next": "12.3.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "raw-loader": "^4.0.2",
     "next-pwa": "^5.6.0",
+    "raw-loader": "^4.0.2",
     "typescript": "4.8.3"
   },
   "eslintConfig": {

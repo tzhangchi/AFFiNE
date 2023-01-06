@@ -34,3 +34,6 @@ export function getLogger(namespace: string) {
 
 export type { AccessTokenMessage, Member, Workspace } from './apis';
 export { WorkspaceType } from './apis/index.js';
+
+export { WebsocketProviderForTesting } from './provider/affine/WebsocketProviderTesting';
+export { getApis, token } from './apis';
