@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { getApis, token } from '@affine/datacenter';

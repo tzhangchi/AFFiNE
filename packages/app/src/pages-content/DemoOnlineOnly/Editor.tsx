@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef, useState } from 'react';
 import { EditorContainer } from '@blocksuite/editor';
 import { Workspace, Text } from '@blocksuite/store';
@@ -85,6 +86,7 @@ const Editor = ({ workspaceId }: { workspaceId: number }) => {
   }, [workspaceId]);
 
   useEffect(() => {
+    const containerEl = containerRef.current;
     if (currentPage) {
       const editor = new EditorContainer();
       const page = workspace.current?.getPage(currentPage);
@@ -96,8 +98,8 @@ const Editor = ({ workspaceId }: { workspaceId: number }) => {
       containerRef.current?.appendChild(editor);
     }
     return () => {
-      while (containerRef.current?.firstChild) {
-        containerRef.current?.firstChild.remove();
+      while (containerEl?.firstChild) {
+        containerEl?.firstChild.remove();
       }
     };
   }, [currentPage]);
