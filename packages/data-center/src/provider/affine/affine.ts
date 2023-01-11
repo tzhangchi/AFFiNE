@@ -7,7 +7,6 @@ import type {
 import type { User } from '../../types';
 import { Workspace as BlocksuiteWorkspace } from '@blocksuite/store';
 import { BlockSchema } from '@blocksuite/blocks/models';
-import { applyUpdate, encodeStateAsUpdate } from 'yjs';
 import { storage } from './storage.js';
 import assert from 'assert';
 import { WebsocketProvider } from './sync.js';
@@ -17,6 +16,8 @@ import type { Apis, WorkspaceDetail, Callback } from './apis';
 import { setDefaultAvatar } from '../utils.js';
 import { MessageCode } from '../../message';
 import { token } from './apis/token.js';
+
+const { applyUpdate, diffUpdate, encodeStateAsUpdate } = BlocksuiteWorkspace.Y;
 
 export interface AffineProviderConstructorParams
   extends ProviderConstructorParams {
@@ -86,10 +87,13 @@ export class AffineProvider extends BaseProvider {
     assert(workspaceId, 'Blocksuite Workspace without room(workspaceId).');
     const updates = await this._apis.downloadWorkspace(workspaceId);
     if (updates && updates.byteLength) {
-      await new Promise(resolve => {
-        doc.once('update', resolve);
-        BlocksuiteWorkspace.Y.applyUpdate(doc, new Uint8Array(updates));
-      });
+      const currentState1 = encodeStateAsUpdate(doc);
+      const diff = diffUpdate(currentState1, new Uint8Array(updates));
+      !!diff.length &&
+        (await new Promise(resolve => {
+          doc.once('update', resolve);
+          BlocksuiteWorkspace.Y.applyUpdate(doc, new Uint8Array(updates));
+        }));
     }
   }
 
