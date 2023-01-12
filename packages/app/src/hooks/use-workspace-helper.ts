@@ -47,10 +47,10 @@ export const useWorkspaceHelper = () => {
         if (user) {
           await login();
         }
-        const newWorkspaceId = await dataCenter.enableWorkspaceCloud(
+        const newWorkspace = await dataCenter.enableWorkspaceCloud(
           currentWorkspace
         );
-        router.push(`/workspace/${newWorkspaceId}/setting`);
+        newWorkspace && router.push(`/workspace/${newWorkspace.id}/setting`);
         toast('Enabled success');
       }
     });

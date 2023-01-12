@@ -10,7 +10,6 @@ export const useEnsureWorkspace = () => {
   const [activeWorkspaceId, setActiveWorkspaceId] = useState(
     router.query.workspaceId as string
   );
-
   // const defaultOutLineWorkspaceId = '99ce7eb7';
   // console.log(defaultOutLineWorkspaceId);
   useEffect(() => {

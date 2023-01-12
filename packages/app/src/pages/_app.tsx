@@ -71,6 +71,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
 
 const AppDefender = ({ children }: PropsWithChildren) => {
   const { synced } = useAppState();
+  // console.log('appState: ', appState);
   const router = useRouter();
 
   useEffect(() => {

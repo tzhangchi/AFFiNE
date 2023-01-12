@@ -33,8 +33,18 @@ export class WorkspaceUnit {
   private _blocksuiteWorkspace?: BlocksuiteWorkspace | null;
 
   constructor(params: WorkspaceUnitCtorParams) {
-    this.id = params.id;
+    this.id = String(params.id);
     this.update(params);
+  }
+
+  get isPublish() {
+    console.error('Suggest changing to published');
+    return this.published;
+  }
+
+  get isLocal() {
+    console.error('Suggest changing to syncMode');
+    return this.syncMode === 'all';
   }
 
   get blocksuiteWorkspace() {
@@ -52,13 +62,16 @@ export class WorkspaceUnit {
     Object.assign(this, params);
   }
 
-  get isPublish() {
-    console.error('Suggest changing to published');
-    return this.published;
-  }
-
-  get isLocal() {
-    console.error('Suggest changing to syncMode');
-    return this.syncMode === 'all';
+  toJSON(): Omit<WorkspaceUnitCtorParams, 'blocksuiteWorkspace'> {
+    return {
+      id: this.id,
+      name: this.name,
+      avatar: this.avatar,
+      owner: this.owner,
+      published: this.published,
+      memberCount: this.memberCount,
+      provider: this.provider,
+      syncMode: this.syncMode,
+    };
   }
 }

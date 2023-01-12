@@ -8,7 +8,6 @@ export const WorkspaceIndex = () => {
   const router = useRouter();
   const { currentWorkspace } = useAppState();
   const { workspaceLoaded } = useEnsureWorkspace();
-
   useEffect(() => {
     if (workspaceLoaded) {
       router.push(`/workspace/${currentWorkspace?.id}`);
